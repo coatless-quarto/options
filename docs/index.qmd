@@ -9,7 +9,7 @@ The `options` Quarto extension allows developers to craft options that incorpora
 
 ## Usage
 
-The `options` extension does not introduce significant enhancements to your document's content. Instead, it serves as a way for authors to quickly bootstrap their own custom code cell through an [extension embedding](https://quarto.org/docs/journals/formats.html#extension-embedding).
+The `options` extension does not introduce significant enhancements to your document's content. Instead, it serves as a way for authors to quickly bootstrap working with option tables through an [extension embedding](https://quarto.org/docs/journals/formats.html#extension-embedding).
 
 ## Installation
 
@@ -45,7 +45,7 @@ When embedding the extension inside of your own extension, you should see the fo
 
 Inside of the `_extension.yml`, please include the nested extension under `filters` as the first extension to run: 
 
-```
+```yml
 title: My Extension
 author: My Name
 version: 0.1.1
