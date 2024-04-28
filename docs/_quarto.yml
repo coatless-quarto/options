@@ -1,0 +1,24 @@
+project:
+  type: website
+
+website:
+  title: "options"
+  reader-mode: true
+  repo-url: https://github.com/coatless-quarto/options/
+  repo-actions: [edit, issue]
+  sidebar:
+    style: "floating"
+    search: true
+    tools:
+      - icon: github
+        href: https://github.com/coatless-quarto/options/
+    contents: 
+      - text: "Home"
+        file: index.qmd
+      - section: "Extra"
+        contents:
+        - qoptions-release-notes.qmd
+
+format: 
+  html:
+    toc: true

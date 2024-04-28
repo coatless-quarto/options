@@ -1,0 +1,17 @@
+---
+title: "Release Notes"
+date: "04-27-2024"
+date-modified: last-modified
+engine: markdown
+format: 
+  html:
+    toc: true
+---
+
+# 0.0.0-dev.1:  ???? (??-??-????)
+
+## Features
+
+- `options` focuses on option tooling for Quarto extension developers:
+  - `tryOption`: attempts to retrieve the option, otherwise returns `nil`.
+  - `getOption`: retrieve the current value of the option or fall back to a default value if not found.
