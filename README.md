@@ -1,25 +1,70 @@
-# Quarto Extension Development with Lua in a Devcontainer
+# options: A Quarto Developer Extension for Working With Option Data
 
-This repository houses a devcontainer that setups a [Quarto extension development environment](https://quarto.org/docs/extensions/lua.html). The container is setup to work with [GitHub Codespaces](https://github.com/features/codespaces) to instantly have a cloud-based developer workflow.
+The `options` Quarto extension allows developers to craft options that incorporate default parameters.
 
-You can try out the Codespace by clicking on the following button:
+## Usage
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/coatless-devcontainer/quarto-extension-dev?quickstart=1)
+The `options` extension does not introduce significant enhancements to your document's content. Instead, it serves as a way for authors to quickly bootstrap their own custom code cell through an [extension embedding](https://quarto.org/docs/journals/formats.html#extension-embedding).
 
-**Note:** Codespaces are available to Students and Teachers for free [up to 180 core hours per month](https://docs.github.com/en/education/manage-coursework-with-github-classroom/integrate-github-classroom-with-an-ide/using-github-codespaces-with-github-classroom#about-github-codespaces) through [GitHub Education](https://education.github.com/). Otherwise, you will have [up to 60 core hours and 15 GB free per month](https://github.com/features/codespaces#pricing).
+## Installation
 
-The devcontainer contains:
+To install the `options` extension inside of your own extension, follow these steps:
 
-- The latest [pre-release](https://quarto.org/docs/download/prerelease) version of Quarto.
-- [Quarto VS Code Extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto).
-- [Lua LSP VS Code Extension](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) for Lua code intelligence.
-- [GitHub copilot VS Code Extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot).
-- `R` and `Python`
-- `knitr` and `jupyter`
+1. Open your terminal.
 
-## References
+2. Navigate to where your own extension's development location is.
 
-- [Quarto: Lua API Reference](https://quarto.org/docs/extensions/lua-api.html)
-- [Quarto: Lua Development](https://quarto.org/docs/extensions/lua.html)
-- [Pandoc: Lua Filters](https://pandoc.org/lua-filters.html)
-- [Lua: Manual](https://www.lua.org/manual/5.4/)
+3. Execute the following command:
+
+```sh
+quarto add coatless-quarto/options --embed <your-extension-name>
+```
+
+This command will download and install the extension under the `_extensions` subdirectory of your Quarto extension project. If you are using version control, ensure that you include this directory in your repository.
+
+### File structure
+
+When embedding the extension inside of your own extension, you should see the following folder structure:
+
+```sh
+.
+└── _extensions
+    └── <your-extension-name>
+        └── _extensions
+            └── coatless-quarto
+                └── options
+
+```
+
+### Registering the extension
+
+Inside of the `_extension.yml`, please include the nested extension under `filters` as the first extension to run: 
+
+```
+title: My Extension
+author: My Name
+version: 0.1.1
+quarto-required: ">=1.4.549"
+contributes:
+  format:
+    common:
+      filters:
+        - coatless-quarto/options 
+        - <your-extension>.lua
+```
+
+## Retrieving Options
+
+Inside of the Lua filter, this extension can be used to setup:
+
+```lua
+-- Store function calls in a table value
+local options = require("_extensions.coatless-quarto.options.options")
+
+-- Attempt to retrieve option
+-- If it fails, we default to return `nil`.
+local my_option_attempt = options.tryOption(options, key)
+
+-- Retrieve option if present, otherwise use default
+local my_option = options.getOption(options, key, default)
+```
