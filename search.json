@@ -1,0 +1,64 @@
+[
+  {
+    "objectID": "qoptions-release-notes.html",
+    "href": "qoptions-release-notes.html",
+    "title": "Release Notes",
+    "section": "",
+    "text": "options focuses on option tooling for Quarto extension developers:\n\ntryOption: attempts to retrieve the option, otherwise returns nil.\ngetOption: retrieve the current value of the option or fall back to a default value if not found.",
+    "crumbs": [
+      "Extra",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "qoptions-release-notes.html#features",
+    "href": "qoptions-release-notes.html#features",
+    "title": "Release Notes",
+    "section": "",
+    "text": "options focuses on option tooling for Quarto extension developers:\n\ntryOption: attempts to retrieve the option, otherwise returns nil.\ngetOption: retrieve the current value of the option or fall back to a default value if not found.",
+    "crumbs": [
+      "Extra",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "The options Quarto extension allows developers to craft options that incorporate default parameters.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "Home",
+    "section": "Usage",
+    "text": "Usage\nThe options extension does not introduce significant enhancements to your document’s content. Instead, it serves as a way for authors to quickly bootstrap their own custom code cell through an extension embedding.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "Home",
+    "section": "Installation",
+    "text": "Installation\nTo install the options extension inside of your own extension, follow these steps:\n\nOpen your terminal.\nNavigate to where your own extension’s development location is.\nExecute the following command:\n\nquarto add coatless-quarto/options --embed &lt;your-extension-name&gt;\nThis command will download and install the extension under the _extensions subdirectory of your Quarto extension project. If you are using version control, ensure that you include this directory in your repository.\n\nFile structure\nWhen embedding the extension inside of your own extension, you should see the following folder structure:\n.\n└── _extensions\n    └── &lt;your-extension-name&gt;\n        └── _extensions\n            └── coatless-quarto\n                └── options\n\n\nRegistering the extension\nInside of the _extension.yml, please include the nested extension under filters as the first extension to run:\ntitle: My Extension\nauthor: My Name\nversion: 0.1.1\nquarto-required: \"&gt;=1.4.549\"\ncontributes:\n  format:\n    common:\n      filters:\n        - coatless-quarto/options \n        - &lt;your-extension&gt;.lua",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#retrieving-options",
+    "href": "index.html#retrieving-options",
+    "title": "Home",
+    "section": "Retrieving Options",
+    "text": "Retrieving Options\nInside of the Lua filter, this extension can be used to setup:\n-- Store function calls in a table value\nlocal options = require(\"_extensions.coatless-quarto.options.options\")\n\n-- Attempt to retrieve option\noptions.tryOption(options, key)\n\n-- Retrieve option if present, otherwise use default\noptions.getOption(options, key, default)",
+    "crumbs": [
+      "Home"
+    ]
+  }
+]
