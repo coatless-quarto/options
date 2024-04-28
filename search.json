@@ -36,7 +36,7 @@
     "href": "index.html#usage",
     "title": "Home",
     "section": "Usage",
-    "text": "Usage\nThe options extension does not introduce significant enhancements to your document’s content. Instead, it serves as a way for authors to quickly bootstrap their own custom code cell through an extension embedding.",
+    "text": "Usage\nThe options extension does not introduce significant enhancements to your document’s content. Instead, it serves as a way for authors to quickly bootstrap working with option tables through an extension embedding.",
     "crumbs": [
       "Home"
     ]
